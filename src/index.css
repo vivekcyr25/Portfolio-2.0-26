@@ -1,0 +1,349 @@
+@import "tailwindcss";
+@import "./styles/tokens.css";
+
+@theme {
+  --color-editorial-bg: #F3F0E8;
+  --color-editorial-surface: #FAF8F4;
+  --color-editorial-dark: #111111;
+  --color-editorial-dark-surface: #1A1A1A;
+  --color-editorial-primary: #111111;
+  --color-editorial-muted: #706D66;
+  --color-editorial-border: #D7D1C6;
+  --color-editorial-border-dark: #2A2A2A;
+  --color-editorial-accent: #C85C3B;
+  --color-editorial-accent-hover: #AF4929;
+
+  /* Barlow Condensed = Galgo Condensed substitute */
+  --font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --font-helix: "Helix", "Plus Jakarta Sans", "Space Grotesk", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Fallback aliases */
+  --color-theme-bg: #F3F0E8;
+  --color-theme-text: #111111;
+  --color-theme-primary: #C85C3B;
+  --color-theme-secondary: #111111;
+  --color-theme-accent: #C85C3B;
+}
+
+/* ── Base Reset & Theme transitions ───────────────────────────── */
+html {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   TYPOGRAPHY — BARLOW CONDENSED (DISPLAY) & HELIX (SMALL HEADINGS)
+══════════════════════════════════════════════════════════════════ */
+h1, h2 {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Small headings, subheadings, nav items, tags, and category labels use Helix font */
+h3, h4, h5, h6,
+.font-helix,
+nav,
+nav a,
+.nav-link,
+[data-font="helix"],
+.section-tag,
+[class*="tracking-widest"],
+[class*="tracking-wider"],
+.subheading {
+  font-family: 'Helix', 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.font-display {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif !important;
+}
+
+h1.font-display, h2.font-display, .font-display.font-bold {
+  font-weight: 800 !important;
+  letter-spacing: 0.02em;
+}
+
+p {
+  font-family: var(--font-body);
+}
+
+.font-mono-meta {
+  font-family: 'Helix', 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   DASHBOARD FONT REMAP — Unify legacy dashboard fonts to site stack
+   font-orbitron  → Barlow Condensed (display)
+   font-space-mono, font-chakra → Helix (small headings / labels)
+══════════════════════════════════════════════════════════════════ */
+.font-orbitron,
+[class*="font-orbitron"] {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif !important;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.font-space-mono,
+.font-chakra,
+[class*="font-space-mono"],
+[class*="font-chakra"] {
+  font-family: 'Helix', 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif !important;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   UNIVERSAL TEXT HOVER ANIMATIONS (EDITORIAL VS TI-CYBER)
+══════════════════════════════════════════════════════════════════ */
+
+/* Transition for all textual elements */
+h1, h2, h3, h4, h5, h6,
+p, span, a, li, label, strong, em, b, i,
+[class*="font-mono"], .font-mono {
+  transition: color 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.22s ease !important;
+}
+
+/* ─── 1. EDITORIAL / CLASSIC MODE TEXT HOVERS ─────────────────── */
+/* Headings hover: terracotta accent & subtle crisp lift */
+h1:hover, h2:hover, h3:hover, h4:hover, h5:hover, h6:hover {
+  color: #C85C3B !important;
+  cursor: default;
+}
+
+/* Paragraphs & lead text: transitions to rich active dark terracotta tone */
+p:hover {
+  color: #C85C3B !important;
+  cursor: default;
+}
+
+/* Spans, labels, and mono metadata text */
+span:hover, label:hover, li:hover, .font-mono:hover, [class*="font-mono"]:hover {
+  color: #C85C3B !important;
+}
+
+/* Anchor links */
+a:hover {
+  color: #AF4929 !important;
+}
+
+/* ─── 2. TI-CYBER MODE TEXT HOVERS ────────────────────────────── */
+/* Headings hover: vibrant electric cyan with multi-tier laser glow */
+[data-mode="cyber"] h1:hover,
+[data-mode="cyber"] h2:hover,
+[data-mode="cyber"] h3:hover,
+[data-mode="cyber"] h4:hover,
+[data-mode="cyber"] h5:hover,
+[data-mode="cyber"] h6:hover {
+  color: #00E5FF !important;
+  text-shadow: 0 0 10px #00E5FF, 0 0 22px rgba(0, 229, 255, 0.7), 0 0 35px rgba(0, 229, 255, 0.4) !important;
+  cursor: default;
+}
+
+/* Paragraphs hover: clean neon glow */
+[data-mode="cyber"] p:hover {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8), 0 0 20px rgba(0, 229, 255, 0.4) !important;
+  cursor: default;
+}
+
+/* Spans, labels, and mono text in cyber mode */
+[data-mode="cyber"] span:hover,
+[data-mode="cyber"] label:hover,
+[data-mode="cyber"] li:hover,
+[data-mode="cyber"] .font-mono:hover,
+[data-mode="cyber"] [class*="font-mono"]:hover {
+  color: #00E5FF !important;
+  text-shadow: 0 0 8px rgba(0, 229, 255, 0.8), 0 0 18px rgba(0, 229, 255, 0.4) !important;
+}
+
+/* Anchor links in cyber mode */
+[data-mode="cyber"] a:hover {
+  color: #38BDF8 !important;
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.8) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   CONTAINER & SECTION LAYOUT
+══════════════════════════════════════════════════════════════════ */
+.editorial-container {
+  width: 100%;
+  max-width: 1360px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .editorial-container {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .editorial-container {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
+}
+
+.editorial-section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (min-width: 768px) {
+  .editorial-section {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   SCROLLBAR
+══════════════════════════════════════════════════════════════════ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+
+:root ::-webkit-scrollbar-track { background: #EBE6DC; }
+:root ::-webkit-scrollbar-thumb { background: #C4BEB2; border-radius: 3px; }
+:root ::-webkit-scrollbar-thumb:hover { background: #706D66; }
+
+[data-mode="cyber"] ::-webkit-scrollbar-track { background: #0A0F1C; }
+[data-mode="cyber"] ::-webkit-scrollbar-thumb { background: rgba(0, 229, 255, 0.3); border-radius: 3px; }
+[data-mode="cyber"] ::-webkit-scrollbar-thumb:hover { background: rgba(0, 229, 255, 0.6); }
+
+/* ── Hover underline ───────────────────────────────────────────── */
+.hover-editorial-line {
+  position: relative;
+  display: inline-block;
+}
+
+.hover-editorial-line::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1.5px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--accent-primary);
+  transform-origin: bottom right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hover-editorial-line:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* ── Focus ─────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 3px;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   TI-CYBER MODE UTILITIES
+══════════════════════════════════════════════════════════════════ */
+.cyber-glass {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.cyber-text-glow {
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.6), 0 0 30px rgba(0, 229, 255, 0.2);
+}
+
+.cyber-text-glow-amber {
+  text-shadow: 0 0 10px rgba(245, 158, 11, 0.6), 0 0 30px rgba(245, 158, 11, 0.2);
+}
+
+.cyber-border-glow {
+  box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.3), 0 0 20px rgba(0, 229, 255, 0.1);
+}
+
+.cyber-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.cyber-scanlines {
+  position: relative;
+}
+.cyber-scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.cyber-bracket {
+  position: relative;
+}
+.cyber-bracket::before,
+.cyber-bracket::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-color: rgba(0, 229, 255, 0.5);
+  border-style: solid;
+  transition: border-color 0.3s ease;
+}
+.cyber-bracket::before {
+  top: -1px;
+  left: -1px;
+  border-width: 1px 0 0 1px;
+}
+.cyber-bracket::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 1px 1px 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

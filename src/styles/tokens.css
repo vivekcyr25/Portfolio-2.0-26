@@ -1,0 +1,80 @@
+/* ═══════════════════════════════════════════════════
+   EDITORIAL MODE (Default)
+═══════════════════════════════════════════════════ */
+:root {
+  --bg-primary: #F3F0E8;
+  --bg-surface: #FAF8F4;
+  --bg-dark: #111111;
+  --bg-dark-surface: #181818;
+
+  --text-primary: #111111;
+  --text-muted: #706D66;
+  --text-light: #F3F0E8;
+  --text-light-muted: #9E9A91;
+
+  --border-subtle: #D7D1C6;
+  --border-dark: #262626;
+
+  --accent-primary: #C85C3B;
+  --accent-primary-hover: #AF4929;
+  --accent-secondary: #111111;
+  --accent-terracotta: #C85C3B;
+  --accent-terracotta-hover: #AF4929;
+
+  /* Typography */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-helix: 'Helix', 'Plus Jakarta Sans', 'Space Grotesk', -apple-system, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  /* Spacing and Layout */
+  --container-max: 1380px;
+
+  /* Motion */
+  --ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 200ms;
+  --duration-normal: 400ms;
+  --duration-slow: 700ms;
+
+  /* Card / Glass */
+  --card-bg: #FAF8F4;
+  --card-border: #D7D1C6;
+  --section-alt-bg: #F3F0E8;
+
+  /* Glow — off in editorial */
+  --glow-primary: none;
+  --glow-accent: none;
+}
+
+/* ═══════════════════════════════════════════════════
+   TI-CYBER MODE (Dynamically Controlled by Theme Engine)
+═══════════════════════════════════════════════════ */
+[data-mode="cyber"] {
+  --bg-primary: var(--theme-bg, #04080F);
+  --bg-surface: #08101E;
+  --bg-dark: #02050B;
+  --bg-dark-surface: #060B14;
+
+  --text-primary: var(--theme-text, #E8F4FF);
+  --text-muted: #7090B0;
+  --text-light: var(--theme-text, #E8F4FF);
+  --text-light-muted: #4A6080;
+
+  --border-subtle: var(--theme-border, rgba(var(--theme-primary-rgb, 0, 229, 255), 0.18));
+  --border-dark: rgba(var(--theme-primary-rgb, 0, 229, 255), 0.08);
+
+  --accent-primary: var(--theme-primary, #00E5FF);
+  --accent-primary-hover: var(--theme-secondary, #00C8E0);
+  --accent-secondary: var(--theme-secondary, #F59E0B);
+  --accent-terracotta: var(--theme-primary, #00E5FF);
+  --accent-terracotta-hover: var(--theme-secondary, #00C8E0);
+
+  /* Card / Glass */
+  --card-bg: rgba(var(--theme-primary-rgb, 0, 229, 255), 0.04);
+  --card-border: var(--theme-border, rgba(var(--theme-primary-rgb, 0, 229, 255), 0.18));
+  --section-alt-bg: #060D1A;
+
+  /* Glow */
+  --glow-primary: 0 0 20px rgba(var(--theme-primary-rgb, 0, 229, 255), 0.35), 0 0 60px rgba(var(--theme-primary-rgb, 0, 229, 255), 0.12);
+  --glow-accent: 0 0 15px rgba(var(--theme-secondary-rgb, 139, 92, 246), 0.3);
+}
