@@ -81,7 +81,9 @@ export const Contact: React.FC = () => {
 
             <div className="lg:col-span-4 flex flex-col items-start lg:items-end space-y-4">
               <a
-                href="mailto:viveklpu008@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=viveklpu008@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full sm:w-auto px-8 py-5 font-helix text-xs uppercase tracking-widest font-bold rounded-sm flex items-center justify-center gap-3 group shadow-md transition-all"
                 style={{
                   background: 'var(--accent-primary)',
