@@ -43,7 +43,7 @@ const App: React.FC = () => {
       <AuthProvider>
         <ThemeProvider>
           <PortfolioModeProvider>
-            <Router>
+            <Router basename={import.meta.env.BASE_URL}>
               <Suspense fallback={<LoadingScreen />}>
                 <Routes>
                   <Route path="/" element={<Home />} />

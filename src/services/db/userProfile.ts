@@ -20,22 +20,51 @@ export const defaultProfile: UserProfile = {
 };
 
 export const getUserProfile = async (uid: string): Promise<UserProfile> => {
-  if (!uid) throw new Error("No user ID provided");
+  if (!uid) return defaultProfile;
   
-  const profileRef = doc(db, 'users', uid, 'profile', 'data');
-  const snap = await getDoc(profileRef);
-  
-  if (snap.exists()) {
-    return snap.data() as UserProfile;
-  } else {
-    await setDoc(profileRef, defaultProfile);
+  if (uid.startsWith('guest_')) {
+    const cached = localStorage.getItem(`profile_${uid}`);
+    if (cached) {
+      try { return JSON.parse(cached); } catch (e) {}
+    }
+    return defaultProfile;
+  }
+
+  try {
+    const profileRef = doc(db, 'users', uid, 'profile', 'data');
+    const snap = await getDoc(profileRef);
+    
+    if (snap.exists()) {
+      return snap.data() as UserProfile;
+    } else {
+      await setDoc(profileRef, defaultProfile);
+      return defaultProfile;
+    }
+  } catch (error) {
+    console.warn("Firestore getUserProfile fallback:", error);
+    const cached = localStorage.getItem(`profile_${uid}`);
+    if (cached) {
+      try { return JSON.parse(cached); } catch (e) {}
+    }
     return defaultProfile;
   }
 };
 
 export const updateUserProfile = async (uid: string, updates: Partial<UserProfile>) => {
-  if (!uid) throw new Error("No user ID provided");
+  if (!uid) return;
   
-  const profileRef = doc(db, 'users', uid, 'profile', 'data');
-  await updateDoc(profileRef, updates);
+  try {
+    const cached = localStorage.getItem(`profile_${uid}`);
+    const current = cached ? JSON.parse(cached) : defaultProfile;
+    localStorage.setItem(`profile_${uid}`, JSON.stringify({ ...current, ...updates }));
+  } catch (e) {}
+
+  if (!uid.startsWith('guest_')) {
+    try {
+      const profileRef = doc(db, 'users', uid, 'profile', 'data');
+      await updateDoc(profileRef, updates);
+    } catch (e) {
+      console.warn("Firestore updateUserProfile fallback:", e);
+    }
+  }
 };

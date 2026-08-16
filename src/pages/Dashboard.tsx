@@ -8,15 +8,19 @@ import {
   User as UserIcon,
   Home as HomeIcon,
   Zap,
-  Layout
+  Layout,
+  Grid,
+  Server
 } from 'lucide-react';
 import { NavLink, Outlet, Link } from 'react-router-dom';
 import SecurityBadge from '../components/SecurityBadge';
 
 const navLinks = [
-  { icon: LayoutDashboard, label: 'Workspace', path: 'workspace' },
-  { icon: Activity,        label: 'Analytics', path: 'analytics' },
-  { icon: Settings,        label: 'Config',    path: 'config' },
+  { icon: LayoutDashboard, label: 'Workspace',   path: 'workspace' },
+  { icon: Grid,            label: 'Portfolios',  path: 'portfolios' },
+  { icon: Server,          label: 'Deployments', path: 'deployments' },
+  { icon: Activity,        label: 'Analytics',   path: 'analytics' },
+  { icon: Settings,        label: 'Config',      path: 'config' },
 ];
 
 const topLinks = [

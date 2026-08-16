@@ -38,23 +38,52 @@ export const defaultPreferences: SystemPreferences = {
 };
 
 export const getUserPreferences = async (uid: string): Promise<SystemPreferences> => {
-  if (!uid) throw new Error("No user ID provided");
-  
-  const prefRef = doc(db, 'users', uid, 'preferences', 'system');
-  const snap = await getDoc(prefRef);
-  
-  if (snap.exists()) {
-    return snap.data() as SystemPreferences;
-  } else {
-    // Initialize default preferences
-    await setDoc(prefRef, defaultPreferences);
+  if (!uid) return defaultPreferences;
+
+  if (uid.startsWith('guest_')) {
+    const cached = localStorage.getItem(`prefs_${uid}`);
+    if (cached) {
+      try { return JSON.parse(cached); } catch (e) {}
+    }
+    return defaultPreferences;
+  }
+
+  try {
+    const prefRef = doc(db, 'users', uid, 'preferences', 'system');
+    const snap = await getDoc(prefRef);
+    
+    if (snap.exists()) {
+      return snap.data() as SystemPreferences;
+    } else {
+      // Initialize default preferences
+      await setDoc(prefRef, defaultPreferences);
+      return defaultPreferences;
+    }
+  } catch (error) {
+    console.warn("Firestore getUserPreferences fallback:", error);
+    const cached = localStorage.getItem(`prefs_${uid}`);
+    if (cached) {
+      try { return JSON.parse(cached); } catch (e) {}
+    }
     return defaultPreferences;
   }
 };
 
 export const updateUserPreferences = async (uid: string, updates: Partial<SystemPreferences>) => {
-  if (!uid) throw new Error("No user ID provided");
-  
-  const prefRef = doc(db, 'users', uid, 'preferences', 'system');
-  await updateDoc(prefRef, updates);
+  if (!uid) return;
+
+  try {
+    const cached = localStorage.getItem(`prefs_${uid}`);
+    const current = cached ? JSON.parse(cached) : defaultPreferences;
+    localStorage.setItem(`prefs_${uid}`, JSON.stringify({ ...current, ...updates }));
+  } catch (e) {}
+
+  if (!uid.startsWith('guest_')) {
+    try {
+      const prefRef = doc(db, 'users', uid, 'preferences', 'system');
+      await updateDoc(prefRef, updates);
+    } catch (e) {
+      console.warn("Firestore updateUserPreferences fallback:", e);
+    }
+  }
 };

@@ -5,7 +5,9 @@ import App from './App';
 import './index.css';
 
 // Register Syncfusion License Globally
-registerLicense(import.meta.env.VITE_SYNCFUSION_LICENSE);
+if (import.meta.env.VITE_SYNCFUSION_LICENSE) {
+  registerLicense(import.meta.env.VITE_SYNCFUSION_LICENSE);
+}
 
 import './styles/syncfusion.css';
 

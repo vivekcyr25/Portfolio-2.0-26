@@ -6,10 +6,12 @@ import AuthCard from '../components/auth/AuthCard';
 import OAuthButton from '../components/auth/OAuthButton';
 
 const Login: React.FC = () => {
-  const { loginWithGoogle, loginWithGithub, user, loading: authLoading } = useAuth();
+  const { loginWithGoogle, loginWithGithub, loginAsGuest, loginWithArchitectKey, user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
   const [internalState, setInternalState] = useState<'IDLE' | 'AUTH' | 'SUCCESS' | 'FAILED'>('IDLE');
   const [loadingStep, setLoadingStep] = useState('');
+  const [architectKey, setArchitectKey] = useState('');
+  const [keyError, setKeyError] = useState('');
 
   const loadingSteps = [
     "Establishing handshake...",
@@ -30,7 +32,7 @@ const Login: React.FC = () => {
           clearInterval(interval);
           navigate('/dashboard');
         }
-      }, 600);
+      }, 500);
       return () => clearInterval(interval);
     }
   }, [user, authLoading, navigate]);
@@ -41,9 +43,26 @@ const Login: React.FC = () => {
     try {
       if (provider === 'google') await loginWithGoogle();
       else await loginWithGithub();
-    } catch (err) {
+    } catch (err: any) {
       setInternalState('FAILED');
     }
+  };
+
+  const handleGuestEntry = async () => {
+    setInternalState('AUTH');
+    setLoadingStep("Initializing Guest Architect session...");
+    await loginAsGuest();
+  };
+
+  const handleKeySubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!architectKey.trim()) {
+      setKeyError('Please enter a key or codename');
+      return;
+    }
+    setInternalState('AUTH');
+    setLoadingStep("Verifying Architect key...");
+    await loginWithArchitectKey(architectKey.trim());
   };
 
   return (
@@ -60,7 +79,7 @@ const Login: React.FC = () => {
       {/* Main Content */}
       <AuthCard 
         title={internalState === 'SUCCESS' ? 'Uplink Synced' : 'Authorized Access'}
-        subtitle={internalState === 'SUCCESS' ? 'Loading developer workspace' : 'Connect credentials to access workspace dashboard'}
+        subtitle={internalState === 'SUCCESS' ? 'Loading developer workspace' : 'Connect credentials or enter as guest architect'}
       >
         <AnimatePresence mode="wait">
           {internalState === 'AUTH' || internalState === 'SUCCESS' ? (
@@ -99,30 +118,60 @@ const Login: React.FC = () => {
                 />
               </div>
 
-              <div className="relative py-4 flex items-center justify-center gap-4">
+              {internalState === 'FAILED' && (
+                <div className="p-3 rounded-sm bg-red-500/10 border border-red-500/30 text-center space-y-2">
+                  <p className="font-helix text-[10px] text-red-600 uppercase tracking-wider">
+                    OAuth blocked or unauthorized domain
+                  </p>
+                  <button
+                    onClick={handleGuestEntry}
+                    className="w-full py-2 bg-[#C85C3B] text-white rounded-sm font-helix text-[10px] font-bold uppercase tracking-wider hover:opacity-90 transition-opacity"
+                  >
+                    Continue as Guest Architect →
+                  </button>
+                </div>
+              )}
+
+              <div className="relative py-3 flex items-center justify-center gap-4">
                 <div className="flex-1 h-[1px] bg-[#2A2A2A]" />
-                <span className="font-helix text-[10px] uppercase tracking-wider text-[#706D66]">OR</span>
+                <span className="font-helix text-[10px] uppercase tracking-wider text-[#706D66]">OR ACCESS VIA KEY</span>
                 <div className="flex-1 h-[1px] bg-[#2A2A2A]" />
               </div>
 
-              <div className="space-y-3">
+              <form onSubmit={handleKeySubmit} className="space-y-3">
                 <div className="relative">
                   <input 
-                    disabled
                     type="text" 
-                    placeholder="Architect Key Access" 
-                    className="w-full bg-[#181818] border border-[#2A2A2A] rounded-sm px-4 py-3 text-xs text-[#706D66] placeholder:text-[#3D3D3D] focus:outline-none transition-all cursor-not-allowed"
+                    value={architectKey}
+                    onChange={(e) => { setArchitectKey(e.target.value); setKeyError(''); }}
+                    placeholder="Enter Architect Key (e.g. ARCHITECT-2026)" 
+                    className="w-full bg-[#181818] border border-[#2A2A2A] rounded-sm px-4 py-3 text-xs text-white placeholder:text-[#555555] focus:border-[#C85C3B] focus:outline-none transition-all"
                   />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-[#C85C3B]/60 animate-pulse" />
-                    <span className="font-helix text-[8px] text-[#C85C3B] uppercase tracking-widest">Locked</span>
-                  </div>
+                  <button
+                    type="submit"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 px-3 py-1.5 rounded-sm bg-[#C85C3B] text-white font-helix text-[9px] font-bold uppercase tracking-wider hover:bg-[#B34D2E] transition-colors"
+                  >
+                    Unlock
+                  </button>
                 </div>
+
+                {keyError && (
+                  <p className="text-red-500 text-[10px] font-helix uppercase">{keyError}</p>
+                )}
+
+                <button
+                  type="button"
+                  onClick={handleGuestEntry}
+                  className="w-full py-3 bg-[#181818] hover:bg-[#222222] border border-[#2A2A2A] hover:border-[#C85C3B]/50 text-white rounded-sm font-helix text-[10px] font-bold uppercase tracking-widest transition-all flex items-center justify-center gap-2"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-pulse" />
+                  <span>Instant Guest Architect Access</span>
+                </button>
                 
                 <p className="text-center font-helix text-[9px] text-[#706D66] uppercase tracking-wider">
-                  Uplink token verification active
+                  Full Neural OS workspace features enabled
                 </p>
-              </div>
+              </form>
             </motion.div>
           )}
         </AnimatePresence>

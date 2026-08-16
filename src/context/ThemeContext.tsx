@@ -143,7 +143,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   // Subscribe to Firestore live updates
   useEffect(() => {
-    if (!user) return;
+    if (!user || user.uid?.startsWith('guest_')) return;
 
     const prefRef = doc(db, 'users', user.uid, 'preferences', 'system');
     const unsub = onSnapshot(prefRef, (snap) => {
