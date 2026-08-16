@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowDown, Sparkles, Terminal } from 'lucide-react';
 import profilePhotoNobg from '../../assets/profile-photo-nobg.png';
@@ -10,6 +10,21 @@ export const Hero: React.FC = () => {
   const isCyber = mode === 'cyber';
   const [isTitleHovered, setIsTitleHovered] = useState(false);
   const [isPhotoHovered, setIsPhotoHovered] = useState(false);
+  const lastClickTimeRef = useRef<number>(0);
+
+  const handleFirstPortfolioRedirect = () => {
+    window.open('https://vivekcyr25.github.io/First-Portfolio/', '_blank', 'noopener,noreferrer');
+  };
+
+  const handlePortfolioClick = () => {
+    const now = Date.now();
+    if (now - lastClickTimeRef.current < 450 && now - lastClickTimeRef.current > 0) {
+      lastClickTimeRef.current = 0;
+      handleFirstPortfolioRedirect();
+    } else {
+      lastClickTimeRef.current = now;
+    }
+  };
 
   // Animated telemetry numbers for Cyber Mode
   const [telemetry, setTelemetry] = useState({ ping: 14, cpu: 32, ram: 4.8 });
@@ -261,6 +276,9 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 onMouseEnter={() => setIsTitleHovered(true)}
                 onMouseLeave={() => setIsTitleHovered(false)}
+                onClick={handlePortfolioClick}
+                onDoubleClick={handleFirstPortfolioRedirect}
+                title="Double-click to open First Portfolio"
                 className="font-display font-black tracking-tighter uppercase leading-[0.80] w-full text-center cursor-pointer transition-all duration-500 select-none pointer-events-auto mt-auto translate-y-3 sm:translate-y-6 md:translate-y-8"
                 style={{
                   fontSize: 'clamp(4.8rem, 19vw, 19rem)',
@@ -302,6 +320,9 @@ export const Hero: React.FC = () => {
                       setIsTitleHovered(false);
                     }}
                     onMouseLeave={() => setIsPhotoHovered(false)}
+                    onClick={handlePortfolioClick}
+                    onDoubleClick={handleFirstPortfolioRedirect}
+                    title="Double-click to open First Portfolio"
                     style={{
                       maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
                       WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
