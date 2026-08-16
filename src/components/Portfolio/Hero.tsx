@@ -253,7 +253,7 @@ export const Hero: React.FC = () => {
             {/* Relative Stage for Layered Text + Portrait */}
             <div className="relative w-full max-w-7xl flex flex-col items-center justify-center min-h-[260px] sm:min-h-[340px] md:min-h-[420px] lg:min-h-[480px]">
 
-              {/* Layer 1: Giant "PORTFOLIO" Background Typography */}
+              {/* Layer 1: Giant "PORTFOLIO" Background Typography (moves to front z-30 on hover) */}
               <motion.h2
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -261,10 +261,12 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 onMouseEnter={() => setIsTitleHovered(true)}
                 onMouseLeave={() => setIsTitleHovered(false)}
-                className="font-display font-black tracking-tighter uppercase leading-[0.80] w-full text-center cursor-default transition-all duration-500 select-none pointer-events-auto"
+                className="font-display font-black tracking-tighter uppercase leading-[0.80] w-full text-center cursor-pointer transition-all duration-500 select-none pointer-events-auto"
                 style={{
                   fontSize: 'clamp(4.8rem, 19vw, 19rem)',
                   letterSpacing: '-0.03em',
+                  zIndex: isTitleHovered ? 30 : 10,
+                  position: 'relative',
                   color: isCyber
                     ? isTitleHovered ? 'var(--accent-primary)' : 'transparent'
                     : isTitleHovered ? 'var(--accent-primary)' : 'var(--text-primary)',
@@ -274,6 +276,8 @@ export const Hero: React.FC = () => {
                   opacity: isCyber ? 1 : 0.92,
                   textShadow: isTitleHovered && isCyber
                     ? '0 0 35px rgba(var(--theme-primary-rgb, 0, 229, 255), 0.9), 0 0 70px rgba(var(--theme-primary-rgb, 0, 229, 255), 0.4)'
+                    : isTitleHovered && !isCyber
+                    ? '0 10px 30px rgba(200, 92, 59, 0.25)'
                     : !isTitleHovered && isCyber
                     ? '0 0 20px rgba(var(--theme-primary-rgb, 0, 229, 255), 0.3)'
                     : 'none',
@@ -282,7 +286,7 @@ export const Hero: React.FC = () => {
                 PORTFOLIO
               </motion.h2>
 
-              {/* Layer 2 (Editorial Mode): Foreground Cutout Portrait overlapping PORTFOLIO text */}
+              {/* Layer 2 (Editorial Mode): Cutout Portrait (z-20 - sits between background and foreground) */}
               {!isCyber && (
                 <motion.div
                   initial={{ opacity: 0, y: 35 }}
@@ -293,7 +297,10 @@ export const Hero: React.FC = () => {
                 >
                   <div
                     className="relative w-52 sm:w-64 md:w-80 lg:w-96 xl:w-[420px] max-w-[65%] pointer-events-auto group cursor-pointer"
-                    onMouseEnter={() => setIsPhotoHovered(true)}
+                    onMouseEnter={() => {
+                      setIsPhotoHovered(true);
+                      setIsTitleHovered(false);
+                    }}
                     onMouseLeave={() => setIsPhotoHovered(false)}
                     style={{
                       maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
