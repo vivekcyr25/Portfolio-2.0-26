@@ -2,57 +2,48 @@ name: Neural OS CI/CD
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
-    - name: Install Frontend Dependencies
-      run: npm ci
+      - name: Install Frontend Dependencies
+        run: npm ci
 
-    - name: Lint and Typecheck Frontend
-      run: |
-        npm run lint || true
-        npm run typecheck || true
+      - name: Create .env from Secrets
+        run: |
+          cat > .env << EOF
+          VITE_FIREBASE_API_KEY=${{ secrets.VITE_FIREBASE_API_KEY }}
+          VITE_FIREBASE_AUTH_DOMAIN=${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
+          VITE_FIREBASE_PROJECT_ID=${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+          VITE_FIREBASE_STORAGE_BUCKET=${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
+          VITE_FIREBASE_MESSAGING_SENDER_ID=${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
+          VITE_FIREBASE_APP_ID=${{ secrets.VITE_FIREBASE_APP_ID }}
+          VITE_FIREBASE_MEASUREMENT_ID=${{ secrets.VITE_FIREBASE_MEASUREMENT_ID }}
+          VITE_SYNCFUSION_LICENSE=${{ secrets.VITE_SYNCFUSION_LICENSE }}
+          VITE_GROQ_API_KEY=${{ secrets.VITE_GROQ_API_KEY }}
+          VITE_API_URL=${{ secrets.VITE_API_URL }}
+          EOF
 
-    - name: Build Frontend
-      run: npm run build
-      env:
-        VITE_FIREBASE_API_KEY: ${{ secrets.VITE_FIREBASE_API_KEY }}
-        VITE_FIREBASE_AUTH_DOMAIN: ${{ secrets.VITE_FIREBASE_AUTH_DOMAIN }}
-        VITE_FIREBASE_PROJECT_ID: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
-        VITE_FIREBASE_STORAGE_BUCKET: ${{ secrets.VITE_FIREBASE_STORAGE_BUCKET }}
-        VITE_FIREBASE_MESSAGING_SENDER_ID: ${{ secrets.VITE_FIREBASE_MESSAGING_SENDER_ID }}
-        VITE_FIREBASE_APP_ID: ${{ secrets.VITE_FIREBASE_APP_ID }}
-        VITE_SYNCFUSION_LICENSE: ${{ secrets.VITE_SYNCFUSION_LICENSE }}
-        VITE_API_URL: ${{ secrets.VITE_API_URL }}
+      - name: Build Frontend
+        run: npm run build
 
-    - name: Install Backend Dependencies
-      run: |
-        cd backend
-        npm ci
+      - name: Install Backend Dependencies
+        working-directory: backend
+        run: npm ci
 
-    - name: Backend Sanity Check
-      run: |
-        cd backend
-        node --check server.js
-
-    - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        folder: dist
-        branch: gh-pages
-
+      - name: Backend Syntax Check
+        working-directory: backend
+        run: node --check server.js
