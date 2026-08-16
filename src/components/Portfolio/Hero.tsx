@@ -251,9 +251,9 @@ export const Hero: React.FC = () => {
           <div className="my-auto relative select-none py-4 w-full flex flex-col items-center justify-center">
 
             {/* Relative Stage for Layered Text + Portrait */}
-            <div className="relative w-full max-w-7xl flex flex-col items-center justify-center min-h-[260px] sm:min-h-[340px] md:min-h-[420px] lg:min-h-[480px]">
+            <div className="relative w-full max-w-7xl flex flex-col items-center justify-end pt-20 sm:pt-28 md:pt-36 pb-2 min-h-[320px] sm:min-h-[400px] md:min-h-[480px] lg:min-h-[540px]">
 
-              {/* Layer 1: Giant "PORTFOLIO" Background Typography (moves to front z-30 on hover) */}
+              {/* Layer 1: Giant "PORTFOLIO" Typography (moves to front z-30 on hover) */}
               <motion.h2
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -261,7 +261,7 @@ export const Hero: React.FC = () => {
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
                 onMouseEnter={() => setIsTitleHovered(true)}
                 onMouseLeave={() => setIsTitleHovered(false)}
-                className="font-display font-black tracking-tighter uppercase leading-[0.80] w-full text-center cursor-pointer transition-all duration-500 select-none pointer-events-auto"
+                className="font-display font-black tracking-tighter uppercase leading-[0.80] w-full text-center cursor-pointer transition-all duration-500 select-none pointer-events-auto mt-auto translate-y-3 sm:translate-y-6 md:translate-y-8"
                 style={{
                   fontSize: 'clamp(4.8rem, 19vw, 19rem)',
                   letterSpacing: '-0.03em',
@@ -286,36 +286,36 @@ export const Hero: React.FC = () => {
                 PORTFOLIO
               </motion.h2>
 
-              {/* Layer 2 (Editorial Mode): Cutout Portrait (z-20 - sits between background and foreground) */}
+              {/* Layer 2 (Editorial Mode): Cutout Portrait (Face clearly above text, letters cross chest) */}
               {!isCyber && (
                 <motion.div
                   initial={{ opacity: 0, y: 35 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.85, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                  className="absolute inset-0 flex items-end justify-center z-20 pointer-events-none"
+                  className="absolute inset-0 flex items-end justify-center z-20 pointer-events-none -top-12 sm:-top-16 md:-top-24"
                 >
                   <div
-                    className="relative w-52 sm:w-64 md:w-80 lg:w-96 xl:w-[420px] max-w-[65%] pointer-events-auto group cursor-pointer"
+                    className="relative w-64 sm:w-80 md:w-96 lg:w-[440px] xl:w-[480px] max-w-[75%] h-full flex items-end justify-center pointer-events-auto group cursor-pointer"
                     onMouseEnter={() => {
                       setIsPhotoHovered(true);
                       setIsTitleHovered(false);
                     }}
                     onMouseLeave={() => setIsPhotoHovered(false)}
                     style={{
-                      maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
-                      WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,0) 100%)',
+                      maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
+                      WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 100%)',
                     }}
                   >
                     <img
                       src={profilePhotoNobg}
                       alt="Vivek Sharma"
-                      className="w-full h-auto max-h-[300px] sm:max-h-[380px] md:max-h-[460px] lg:max-h-[520px] object-contain object-bottom transition-all duration-700 select-none"
+                      className="w-auto h-full max-h-[420px] sm:max-h-[500px] md:max-h-[580px] object-contain object-bottom transition-all duration-700 select-none drop-shadow-2xl"
                       style={{
                         filter: isPhotoHovered
-                          ? 'grayscale(0%) contrast(1.12) brightness(1.04) drop-shadow(0 20px 40px rgba(200, 92, 59, 0.35))'
-                          : 'grayscale(100%) contrast(1.08) brightness(1.0) drop-shadow(0 15px 35px rgba(0, 0, 0, 0.28))',
-                        transform: isPhotoHovered ? 'scale(1.03)' : 'scale(1)',
+                          ? 'grayscale(0%) contrast(1.12) brightness(1.04) drop-shadow(0 25px 50px rgba(200, 92, 59, 0.35))'
+                          : 'grayscale(100%) contrast(1.08) brightness(1.0) drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3))',
+                        transform: isPhotoHovered ? 'scale(1.02)' : 'scale(1)',
                       }}
                     />
                   </div>
@@ -385,14 +385,14 @@ export const Hero: React.FC = () => {
 
             </div>
 
-            {/* Hand-drawn Callout — positioned beside the bottom-right corner of PORTFOLIO */}
+            {/* Hand-drawn Callout — directly UNDER the ending 'O' of PORTFOLIO */}
             {!isCyber && (
               <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.7, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
-                className="self-end flex flex-col items-start select-none pointer-events-none z-30 -mt-3 sm:-mt-5 md:-mt-8 mr-2 sm:mr-6 md:mr-10"
+                className="self-end flex flex-col items-center select-none pointer-events-none z-30 mt-1 sm:mt-2 md:mt-3 mr-3 sm:mr-6 md:mr-10 lg:mr-14"
               >
                 <svg
                   width="48"
@@ -400,7 +400,7 @@ export const Hero: React.FC = () => {
                   viewBox="0 0 70 70"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  className="w-8 h-8 sm:w-10 sm:h-10 md:w-11 md:h-11 ml-1"
+                  className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 ml-2"
                   style={{ color: 'var(--accent-primary)' }}
                 >
                   <path
@@ -426,7 +426,7 @@ export const Hero: React.FC = () => {
                   />
                 </svg>
                 <div
-                  className="leading-[1.1] tracking-tight rotate-[-3deg] text-[13px] sm:text-sm md:text-base font-bold whitespace-nowrap"
+                  className="leading-[1.1] tracking-tight rotate-[-3deg] text-[12px] sm:text-[13px] md:text-sm font-bold whitespace-nowrap text-center"
                   style={{
                     fontFamily: "'Caveat', cursive, sans-serif",
                     color: 'var(--text-primary)',
