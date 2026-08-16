@@ -1,33 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vivek Sharma | Portfolio</title>
-  <script type="text/javascript">
-    (function(l) {
-      if (l.search[1] === '/' ) {
-        var decoded = l.search.slice(1).split('&').map(function(s) { 
-          return s.replace(/~and~/g, '&')
-        }).join('?');
-        window.history.replaceState(null, null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-        );
-      }
-    }(window.location))
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary Meta — enhanced dynamically by DocumentHead.tsx -->
+  <title>Vivek Sharma — Frontend Engineer &amp; AI Builder</title>
+  <meta name="description" content="Portfolio of Vivek Sharma — Frontend Engineer, AI Builder &amp; CS Student building modern digital experiences, AI-powered tools, and experimental systems." />
+  <meta name="keywords" content="Vivek Sharma, Frontend Engineer, AI Builder, React, TypeScript, Python, Portfolio, Computer Vision" />
+  <meta name="author" content="Vivek Sharma" />
+  <meta name="theme-color" content="#F3F0E8" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vivekcyr25.github.io/Personal-website/" />
+  <meta property="og:title" content="Vivek Sharma — Frontend Engineer &amp; AI Builder" />
+  <meta property="og:description" content="Building modern digital experiences, AI-powered tools, and experimental systems that turn complex ideas into usable products." />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Vivek Sharma — Frontend Engineer &amp; AI Builder" />
+  <meta property="twitter:description" content="Building modern digital experiences, AI-powered tools, and experimental systems." />
+
+  <!-- Favicon (updated dynamically by DocumentHead.tsx) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23F3F0E8'/><text y='.9em' font-size='72' font-family='sans-serif' font-weight='bold' fill='%23C85C3B'>VS</text></svg>" />
+
+  <!-- SPA redirect for GitHub Pages -->
+  <script>
+    (function(l){if(l.search[1]==='/')
+    {var d=l.search.slice(1).split('&').map(function(s){return s.replace(/~and~/g,'&')}).join('?');
+    window.history.replaceState(null,null,l.pathname.slice(0,-1)+d+l.hash)}}(window.location))
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;600&family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <script type="module" crossorigin src="/Personal-website/assets/index-DD0wYIui.js"></script>
+
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!--
+    Fonts are loaded dynamically by DocumentHead.tsx:
+    - Barlow Condensed  → display / headings  (Galgo Condensed substitute)
+    - IBM Plex Mono     → code / mono labels
+    - Inter             → body copy
+  -->
+  <script type="module" crossorigin src="/Personal-website/assets/index-C8VhFJlz.js"></script>
   <link rel="modulepreload" crossorigin href="/Personal-website/assets/rolldown-runtime-BYbx6iT9.js">
-  <link rel="modulepreload" crossorigin href="/Personal-website/assets/syncfusion-BWbccSo-.js">
-  <link rel="modulepreload" crossorigin href="/Personal-website/assets/vendor-Cd5Ohgor.js">
-  <link rel="modulepreload" crossorigin href="/Personal-website/assets/firebase-C857wcC6.js">
-  <link rel="modulepreload" crossorigin href="/Personal-website/assets/AuthContext-rrqVQH8q.js">
-  <link rel="modulepreload" crossorigin href="/Personal-website/assets/userPreferences-Dt_uuWSE.js">
-  <link rel="stylesheet" crossorigin href="/Personal-website/assets/index-D7DV0WQJ.css">
+  <link rel="modulepreload" crossorigin href="/Personal-website/assets/syncfusion-BNPpXYJi.js">
+  <link rel="modulepreload" crossorigin href="/Personal-website/assets/vendor-C1IWsz0e.js">
+  <link rel="modulepreload" crossorigin href="/Personal-website/assets/firebase-ixb9zNwl.js">
+  <link rel="modulepreload" crossorigin href="/Personal-website/assets/AuthContext-Dkqwu7Ud.js">
+  <link rel="modulepreload" crossorigin href="/Personal-website/assets/userPreferences-DthzEIeb.js">
+  <link rel="stylesheet" crossorigin href="/Personal-website/assets/index-BZA-OyJQ.css">
 </head>
-<body class="bg-dark-bg">
-  <div id="root"></div>
+<body style="background-color:var(--bg-primary,#F3F0E8);color:var(--text-primary,#111111)">
+  <div id="root"></div>
 </body>
 </html>
