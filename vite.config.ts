@@ -8,7 +8,7 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: (process.env.NODE_ENV === 'production' && !process.env.VERCEL) ? '/Personal-website/' : '/',
+  base: (process.env.NODE_ENV === 'production' && !process.env.VERCEL) ? '/Portfolio-2.0-26/' : '/',
   build: {
     outDir: 'dist',
     rollupOptions: {
