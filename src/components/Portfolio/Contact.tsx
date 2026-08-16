@@ -109,7 +109,7 @@ export const Contact: React.FC = () => {
             {[
               { label: 'GITHUB',          href: 'https://github.com/vivekcyr25',                                     icon: <i className="fab fa-github text-lg" />,      sub: '@vivekcyr25' },
               { label: 'LINKEDIN',        href: 'https://www.linkedin.com/in/vivek-sharma-2bba8b398/',               icon: <i className="fab fa-linkedin-in text-lg" />, sub: 'Vivek Sharma' },
-              { label: 'SPACE PORTFOLIO', href: 'https://vivekcyr25.github.io/space-portfolio/',                     icon: <Globe size={18} />,                          sub: 'Interactive 3D' },
+              { label: 'SPACE PORTFOLIO', href: 'https://vivekcyr25.github.io/First-Portfolio/',                     icon: <Globe size={18} />,                          sub: 'Interactive 3D' },
               { label: 'APIS PLATFORM',   href: 'https://vivekcyr25.github.io/APIS-Academic-Intelligence-System/',  icon: <Globe size={18} />,                          sub: 'Academic AI' },
             ].map((link) => (
               <a

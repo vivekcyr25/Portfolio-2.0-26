@@ -51,8 +51,8 @@ const projects = [
     tech: ['React', 'Three.js / WebGL', 'Framer Motion', 'Web Audio API', 'CSS Grid'],
     problem: 'Standard static portfolios lack tactile interactivity and memorable creative direction.',
     impact: 'Showcases advanced client-side render optimizations, 60fps canvas performance, and high-engagement user interactions.',
-    github: 'https://github.com/vivekcyr25/space-portfolio',
-    live: 'https://vivekcyr25.github.io/space-portfolio/',
+    github: 'https://github.com/vivekcyr25/First-Portfolio',
+    live: 'https://vivekcyr25.github.io/First-Portfolio/',
     featured: false,
   },
 ];

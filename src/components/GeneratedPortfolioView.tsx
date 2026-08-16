@@ -229,7 +229,7 @@ export const GeneratedPortfolioView: React.FC<GeneratedPortfolioViewProps> = ({ 
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="max-w-md mx-auto space-y-4">
             <ContactLink icon={Globe} label="GitHub" value="github.com/vivekcyr25" link={portfolioKnowledge.officialLinks.gitHub} themeClasses={themeClasses} />
             <ContactLink icon={Globe} label="LinkedIn" value="linkedin.com/in/vivek-sharma-2bba8b398/" link={portfolioKnowledge.officialLinks.linkedIn} themeClasses={themeClasses} />
-            <ContactLink icon={Globe} label="Portfolio" value="vivekcyr25.github.io/space-portfolio/" link={portfolioKnowledge.officialLinks.spacePortfolio} themeClasses={themeClasses} />
+            <ContactLink icon={Globe} label="Portfolio" value="vivekcyr25.github.io/First-Portfolio/" link={portfolioKnowledge.officialLinks.spacePortfolio} themeClasses={themeClasses} />
             <ContactLink icon={Mail} label="Email" value="viveklpu008@gmail.com" link="https://mail.google.com/mail/?view=cm&fs=1&to=viveklpu008@gmail.com" themeClasses={themeClasses} />
           </motion.div>
         )}
