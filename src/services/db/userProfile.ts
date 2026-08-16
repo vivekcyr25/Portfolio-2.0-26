@@ -4,6 +4,7 @@ import { db } from '../../lib/firebase';
 export interface UserProfile {
   codename: string;
   displayName: string;
+  photoURL?: string;
   timezone: string;
   language: string;
   notificationsEnabled: boolean;
@@ -12,6 +13,7 @@ export interface UserProfile {
 export const defaultProfile: UserProfile = {
   codename: 'UNASSIGNED',
   displayName: 'ANONYMOUS',
+  photoURL: '',
   timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
   language: 'EN-US',
   notificationsEnabled: true
