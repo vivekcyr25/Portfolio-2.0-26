@@ -39,6 +39,8 @@ jobs:
 
       - name: Build Frontend
         run: npm run build
+        env:
+          GITHUB_PAGES: 'true'
 
       - name: Install Backend Dependencies
         working-directory: backend

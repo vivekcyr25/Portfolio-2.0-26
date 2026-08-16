@@ -8,7 +8,8 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
-  base: (process.env.NODE_ENV === 'production' && !process.env.VERCEL) ? '/Portfolio-2.0-26/' : '/',
+  // Set GITHUB_PAGES=true in CI env to enable the correct sub-path base
+  base: process.env.GITHUB_PAGES === 'true' ? '/Portfolio-2.0-26/' : '/',
   build: {
     outDir: 'dist',
     rollupOptions: {
