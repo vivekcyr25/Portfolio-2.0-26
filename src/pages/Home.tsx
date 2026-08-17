@@ -11,12 +11,14 @@ import { Contact } from '../components/Portfolio/Contact';
 import { CyberTransition } from '../components/Portfolio/CyberTransition';
 import { DocumentHead } from '../components/Portfolio/DocumentHead';
 import { PortfolioModeProvider, usePortfolioMode } from '../context/PortfolioModeContext';
+import { useScrollTextStretch } from '../hooks/useScrollTextStretch';
 
 // Lazy load AI Assistant
 const NeuralAssistant = lazy(() => import('../components/AI/NeuralAssistant'));
 
 const HomeContent: React.FC = () => {
   const { mode } = usePortfolioMode();
+  useScrollTextStretch();
 
   return (
     <div

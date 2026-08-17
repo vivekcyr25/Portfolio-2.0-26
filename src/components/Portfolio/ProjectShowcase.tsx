@@ -76,10 +76,12 @@ export const ProjectShowcase: React.FC = () => {
   return (
     <section
       id="work"
-      className="py-24 md:py-36 border-b relative overflow-hidden"
+      className="py-24 md:py-36 relative overflow-hidden"
       style={{
-        background: isCyber ? '#060D1A' : '#111111',
-        borderColor: 'var(--border-dark)',
+        background: isCyber
+          ? '#060D1A'
+          : 'linear-gradient(180deg, #FAF8F4 0%, #302C28 5%, #181818 12%, #111111 50%, #181818 88%, #302C28 95%, #F3F0E8 100%)',
+        borderColor: isCyber ? 'var(--border-dark)' : 'transparent',
         color: isCyber ? '#E8F4FF' : '#F3F0E8',
       }}
     >

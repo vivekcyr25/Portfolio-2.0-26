@@ -15,11 +15,13 @@ export const Contact: React.FC = () => {
   return (
     <footer
       id="contact"
-      className="pt-24 md:pt-36 pb-12 border-t relative overflow-hidden"
+      className="pt-24 md:pt-36 pb-12 relative overflow-hidden"
       style={{
-        background: isCyber ? '#04080F' : '#111111',
+        background: isCyber
+          ? '#04080F'
+          : 'linear-gradient(180deg, #FAF8F4 0%, #302C28 6%, #181818 14%, #111111 100%)',
         color: isCyber ? '#E8F4FF' : '#F3F0E8',
-        borderColor: isCyber ? 'rgba(0, 229, 255, 0.1)' : '#262626',
+        borderColor: isCyber ? 'rgba(0, 229, 255, 0.1)' : 'transparent',
       }}
     >
       {/* Backgrounds */}
