@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <!-- Gradients -->
+    <radialGradient id="spaceGlow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#3b0764" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#1e0538" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#05010d" stop-opacity="1"/>
+    </radialGradient>
+    
+    <radialGradient id="cyanCore" cx="30%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+
+    <radialGradient id="purpleCore" cx="70%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#22d3ee"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+
+    <linearGradient id="neonPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc"/>
+      <stop offset="100%" stop-color="#7c3aed"/>
+    </linearGradient>
+
+    <linearGradient id="glassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.02"/>
+    </linearGradient>
+
+    <linearGradient id="frameSplit" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.3"/>
+      <stop offset="48%" stop-color="#f59e0b" stop-opacity="0.2"/>
+      <stop offset="52%" stop-color="#10b981" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <!-- Filters for Bloom/Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="subtleGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Deep Space Background -->
+  <rect width="1200" height="675" fill="url(#spaceGlow)"/>
+  <rect width="1200" height="675" fill="url(#cyanCore)"/>
+  <rect width="1200" height="675" fill="url(#purpleCore)"/>
+
+  <!-- Cosmic Stars & Particles -->
+  <g fill="#ffffff" opacity="0.6">
+    <circle cx="95" cy="80" r="1.5" />
+    <circle cx="210" cy="140" r="1" />
+    <circle cx="340" cy="65" r="2" opacity="0.9" filter="url(#subtleGlow)" fill="#38bdf8"/>
+    <circle cx="520" cy="110" r="1.2" />
+    <circle cx="680" cy="75" r="1" />
+    <circle cx="890" cy="130" r="2" opacity="0.9" filter="url(#subtleGlow)" fill="#c084fc"/>
+    <circle cx="1050" cy="90" r="1.5" />
+    <circle cx="1120" cy="220" r="1" />
+    <circle cx="150" cy="450" r="1.2" />
+    <circle cx="280" cy="580" r="1.5" />
+    <circle cx="980" cy="520" r="2" opacity="0.8" fill="#38bdf8"/>
+    <circle cx="1080" cy="410" r="1.2" />
+    <circle cx="80" cy="300" r="1" />
+    <circle cx="640" cy="600" r="1.5" />
+  </g>
+
+  <!-- Perspective Grid Lines -->
+  <g stroke="#7c3aed" stroke-width="0.8" opacity="0.25">
+    <line x1="100" y1="675" x2="450" y2="420" />
+    <line x1="250" y1="675" x2="500" y2="420" />
+    <line x1="450" y1="675" x2="560" y2="420" />
+    <line x1="750" y1="675" x2="640" y2="420" />
+    <line x1="950" y1="675" x2="700" y2="420" />
+    <line x1="1100" y1="675" x2="750" y2="420" />
+    <line x1="350" y1="480" x2="850" y2="480" />
+    <line x1="280" y1="530" x2="920" y2="530" />
+    <line x1="200" y1="590" x2="1000" y2="590" />
+    <line x1="100" y1="660" x2="1100" y2="660" />
+  </g>
+
+  <!-- Central Holographic HUD Terminal Frame -->
+  <g transform="translate(150, 75)">
+    <!-- Main Frame Glass Panel -->
+    <rect x="0" y="0" width="900" height="490" rx="16" fill="url(#glassGrad)" stroke="#a855f7" stroke-width="1.5" stroke-opacity="0.4"/>
+    <rect x="1" y="1" width="898" height="488" rx="15" fill="none" stroke="#22d3ee" stroke-width="0.8" stroke-opacity="0.2"/>
+
+    <!-- Terminal Top Header Bar -->
+    <rect x="0" y="0" width="900" height="45" rx="16" fill="#0f0524" fill-opacity="0.7"/>
+    <line x1="0" y1="45" x2="900" y2="45" stroke="#a855f7" stroke-width="1" stroke-opacity="0.3"/>
+
+    <!-- Window Dots -->
+    <circle cx="28" cy="22" r="5" fill="#ef4444" opacity="0.8"/>
+    <circle cx="48" cy="22" r="5" fill="#f59e0b" opacity="0.8"/>
+    <circle cx="68" cy="22" r="5" fill="#10b981" opacity="0.8"/>
+
+    <!-- Header Title -->
+    <text x="100" y="27" font-family="'Courier New', monospace" font-size="13" font-weight="700" fill="#a855f7" letter-spacing="2">NEURAL_VIDEO_RESTORATION // PIPELINE_V2.0</text>
+    <text x="760" y="27" font-family="'Courier New', monospace" font-size="12" fill="#22d3ee" letter-spacing="1">STATUS: ACTIVE 4K</text>
+
+    <!-- Split Screen Video Comparison View -->
+    <g transform="translate(30, 65)">
+      <!-- Outer Video Box -->
+      <rect x="0" y="0" width="840" height="280" rx="10" fill="#090117" stroke="#38bdf8" stroke-width="1" stroke-opacity="0.3"/>
+      <rect x="0" y="0" width="840" height="280" fill="url(#frameSplit)"/>
+
+      <!-- Degraded Left Half Simulation -->
+      <g opacity="0.5">
+        <!-- Low Res Pixel Simulation Grid -->
+        <pattern id="pixelGrid" width="16" height="16" patternUnits="userSpaceOnUse">
+          <rect width="15" height="15" fill="#1e1035" opacity="0.4"/>
+          <line x1="0" y1="0" x2="16" y2="0" stroke="#000000" stroke-width="1"/>
+          <line x1="0" y1="0" x2="0" y2="16" stroke="#000000" stroke-width="1"/>
+        </pattern>
+        <rect x="0" y="0" width="418" height="280" fill="url(#pixelGrid)"/>
+        
+        <!-- Noise artifacts / scanlines -->
+        <line x1="10" y1="80" x2="400" y2="80" stroke="#ef4444" stroke-width="1" stroke-dasharray="4 8 12 4" opacity="0.7"/>
+        <line x1="20" y1="140" x2="380" y2="140" stroke="#f59e0b" stroke-width="1" stroke-dasharray="10 5 15" opacity="0.6"/>
+        <line x1="10" y1="210" x2="410" y2="210" stroke="#ec4899" stroke-width="1" stroke-dasharray="8 4 6" opacity="0.5"/>
+      </g>
+
+      <!-- Restored Right Half Simulation (Crisp, High Res Glowing Video) -->
+      <g transform="translate(420, 0)">
+        <!-- Ultra HD Waveforms & AI Super Resolution Layer -->
+        <path d="M 20,140 Q 100,50 200,140 T 400,140" fill="none" stroke="#22d3ee" stroke-width="3" filter="url(#glow)"/>
+        <path d="M 20,160 Q 110,90 210,160 T 400,160" fill="none" stroke="#c084fc" stroke-width="2" filter="url(#subtleGlow)"/>
+        <path d="M 20,120 Q 90,30 190,120 T 400,120" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.8"/>
+        
+        <!-- High-res Matrix Nodes -->
+        <circle cx="100" cy="95" r="4" fill="#22d3ee" filter="url(#subtleGlow)"/>
+        <circle cx="200" cy="140" r="5" fill="#ffffff" filter="url(#glow)"/>
+        <circle cx="300" cy="95" r="4" fill="#c084fc" filter="url(#subtleGlow)"/>
+      </g>
+
+      <!-- Center Split Divider Bar -->
+      <line x1="420" y1="0" x2="420" y2="280" stroke="#22d3ee" stroke-width="2.5" filter="url(#glow)"/>
+      
+      <!-- Center Split Indicator Badge -->
+      <g transform="translate(400, 125)">
+        <rect x="0" y="0" width="40" height="30" rx="6" fill="#0e7490" stroke="#67e8f9" stroke-width="1.5" filter="url(#subtleGlow)"/>
+        <path d="M 12,15 L 18,10 L 18,20 Z" fill="#ffffff"/>
+        <path d="M 28,15 L 22,10 L 22,20 Z" fill="#ffffff"/>
+      </g>
+
+      <!-- Labels on Screen -->
+      <rect x="20" y="20" width="130" height="28" rx="6" fill="#18072b" fill-opacity="0.8" stroke="#ef4444" stroke-width="1"/>
+      <text x="32" y="38" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#f87171">INPUT: NOISY / 480p</text>
+
+      <rect x="670" y="20" width="150" height="28" rx="6" fill="#082f49" fill-opacity="0.8" stroke="#22d3ee" stroke-width="1"/>
+      <text x="682" y="38" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#38bdf8">RESTORED: 4K UHD 60FPS</text>
+    </g>
+
+    <!-- Bottom Metrics & Tensor Pipeline Nodes -->
+    <g transform="translate(30, 365)">
+      <!-- Module 1: Super Resolution Engine -->
+      <rect x="0" y="0" width="260" height="95" rx="8" fill="#0b031c" stroke="#a855f7" stroke-width="1" stroke-opacity="0.4"/>
+      <text x="16" y="25" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#c084fc">ESRGAN / TENSOR ARCH</text>
+      <text x="16" y="48" font-family="sans-serif" font-size="11" fill="#94a3b8">Super-Resolution &amp; Denoising</text>
+      <rect x="16" y="62" width="225" height="6" rx="3" fill="#1e103a"/>
+      <rect x="16" y="62" width="200" height="6" rx="3" fill="url(#neonPurple)"/>
+      <text x="16" y="82" font-family="'Courier New', monospace" font-size="9" fill="#38bdf8">PSNR: 38.4 dB // SSIM: 0.982</text>
+
+      <!-- Connector 1 -->
+      <line x1="265" y1="48" x2="285" y2="48" stroke="#22d3ee" stroke-width="2" stroke-dasharray="3 3"/>
+
+      <!-- Module 2: Frame Interpolation -->
+      <rect x="290" y="0" width="260" height="95" rx="8" fill="#0b031c" stroke="#22d3ee" stroke-width="1" stroke-opacity="0.4"/>
+      <text x="306" y="25" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#38bdf8">OPTICAL FLOW INTERPOLATION</text>
+      <text x="306" y="48" font-family="sans-serif" font-size="11" fill="#94a3b8">Temporal Consistency Engine</text>
+      <rect x="306" y="62" width="225" height="6" rx="3" fill="#1e103a"/>
+      <rect x="306" y="62" width="185" height="6" rx="3" fill="url(#neonCyan)"/>
+      <text x="306" y="82" font-family="'Courier New', monospace" font-size="9" fill="#c084fc">LATENCY: 14.2ms / FRAME</text>
+
+      <!-- Connector 2 -->
+      <line x1="555" y1="48" x2="575" y2="48" stroke="#a855f7" stroke-width="2" stroke-dasharray="3 3"/>
+
+      <!-- Module 3: Color Grading & Clarity -->
+      <rect x="580" y="0" width="260" height="95" rx="8" fill="#0b031c" stroke="#a855f7" stroke-width="1" stroke-opacity="0.4"/>
+      <text x="596" y="25" font-family="'Courier New', monospace" font-size="11" font-weight="bold" fill="#e879f9">HDR CHROMATIC CORRECTION</text>
+      <text x="596" y="48" font-family="sans-serif" font-size="11" fill="#94a3b8">Deep Neural Color Recovery</text>
+      <rect x="596" y="62" width="225" height="6" rx="3" fill="#1e103a"/>
+      <rect x="596" y="62" width="215" height="6" rx="3" fill="url(#neonPurple)"/>
+      <text x="596" y="82" font-family="'Courier New', monospace" font-size="9" fill="#22d3ee">COLOR RECONSTRUCTION: 99.4%</text>
+    </g>
+  </g>
+
+  <!-- Glowing Corner Tech Accents -->
+  <g stroke="#38bdf8" stroke-width="2" fill="none" opacity="0.6">
+    <path d="M 130,95 L 130,55 L 170,55" />
+    <path d="M 1070,95 L 1070,55 L 1030,55" />
+    <path d="M 130,545 L 130,585 L 170,585" />
+    <path d="M 1070,545 L 1070,585 L 1030,585" />
+  </g>
+</svg>
