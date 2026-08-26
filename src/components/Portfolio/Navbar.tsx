@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { usePortfolioMode } from '../../context/PortfolioModeContext';
 
 const navLinks = [
-  { name: 'WORK', href: '#work' },
   { name: 'ABOUT', href: '#about' },
+  { name: 'WORK', href: '#work' },
+  { name: 'CERTIFICATES', href: '#certificates' },
   { name: 'EXPERIENCE', href: '#experience' },
   { name: 'SKILLS', href: '#skills' },
   { name: 'PROCESS', href: '#process' },

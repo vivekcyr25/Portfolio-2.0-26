@@ -50,7 +50,7 @@ export const Toolkit: React.FC = () => {
               className="font-mono text-xs uppercase tracking-widest font-semibold block mb-2"
               style={{ color: 'var(--accent-primary)' }}
             >
-              {isCyber ? '// 04_TECHNICAL_TOOLKIT' : '[ 04 / TECHNICAL TOOLKIT ]'}
+              {isCyber ? '// 05_TECHNICAL_TOOLKIT' : '[ 05 / TECHNICAL TOOLKIT ]'}
             </span>
             <h2
               className="font-display font-bold text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight"

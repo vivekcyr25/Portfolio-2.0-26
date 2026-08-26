@@ -25,7 +25,7 @@ export const About: React.FC = () => {
               className="font-mono text-xs uppercase tracking-widest font-semibold block mb-2"
               style={{ color: 'var(--accent-primary)' }}
             >
-              {isCyber ? '// 06_ABOUT & FOCUS' : '[ 06 / ABOUT & FOCUS ]'}
+              {isCyber ? '// 01_ABOUT & FOCUS' : '[ 01 / ABOUT & FOCUS ]'}
             </span>
             <h2
               className="font-display font-bold text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight"

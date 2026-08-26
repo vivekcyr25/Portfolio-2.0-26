@@ -53,7 +53,7 @@ export const Experience: React.FC = () => {
               className="font-mono text-xs uppercase tracking-widest font-semibold block mb-2"
               style={{ color: 'var(--accent-primary)' }}
             >
-              {isCyber ? '// 03_BACKGROUND & TRAJECTORY' : '[ 03 / BACKGROUND & TRAJECTORY ]'}
+              {isCyber ? '// 04_BACKGROUND & TRAJECTORY' : '[ 04 / BACKGROUND & TRAJECTORY ]'}
             </span>
             <h2
               className="font-display font-bold text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight"

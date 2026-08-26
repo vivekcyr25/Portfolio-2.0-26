@@ -466,8 +466,8 @@ export const Hero: React.FC = () => {
             style={{ borderColor: 'var(--border-subtle)', color: 'var(--text-muted)' }}
           >
             <span>{isCyber ? '// CORE_TELEMETRY: STABLE' : 'ENGINEERING × DESIGN × AI'}</span>
-            <a href="#work" className="flex items-center gap-1.5 font-semibold" style={{ color: 'var(--accent-primary)' }}>
-              <span>{isCyber ? 'ACCESS_PROJECTS ↓' : 'EXPLORE PROJECTS BELOW'}</span>
+            <a href="#about" className="flex items-center gap-1.5 font-semibold" style={{ color: 'var(--accent-primary)' }}>
+              <span>{isCyber ? 'EXPLORE_ABOUT ↓' : 'EXPLORE ABOUT BELOW'}</span>
               <ArrowDown size={13} />
             </a>
           </div>

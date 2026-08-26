@@ -61,7 +61,7 @@ export const BuildProcess: React.FC = () => {
               className="font-mono text-xs uppercase tracking-widest font-semibold block mb-2"
               style={{ color: 'var(--accent-primary)' }}
             >
-              {isCyber ? '// 05_ENGINEERING_METHODOLOGY' : '[ 05 / ENGINEERING METHODOLOGY ]'}
+              {isCyber ? '// 06_ENGINEERING_METHODOLOGY' : '[ 06 / ENGINEERING METHODOLOGY ]'}
             </span>
             <h2
               className="font-display font-bold text-4xl sm:text-5xl md:text-6xl uppercase tracking-tight"

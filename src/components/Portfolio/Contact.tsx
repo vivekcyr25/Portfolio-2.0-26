@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Mail, Globe, ArrowUp } from 'lucide-react';
+import { ArrowUpRight, Mail, Globe, ArrowUp, FileDown, FileText, ExternalLink } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { usePortfolioMode } from '../../context/PortfolioModeContext';
 
@@ -97,9 +97,101 @@ export const Contact: React.FC = () => {
                 <span>VIVEKLPU008@GMAIL.COM</span>
                 <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </a>
+
+              {/* DOWNLOAD CV PRIMARY BUTTON */}
+              <a
+                href="/Vivek_Sharma_CV.pdf"
+                download="Vivek_Sharma_CV.pdf"
+                className="w-full sm:w-auto px-8 py-4 font-mono text-xs uppercase tracking-widest font-bold rounded-sm flex items-center justify-center gap-3 group transition-all"
+                style={{
+                  border: isCyber ? '1px solid rgba(0, 229, 255, 0.4)' : '1px solid #FAF8F4',
+                  background: isCyber ? 'rgba(0, 229, 255, 0.08)' : 'rgba(255, 255, 255, 0.06)',
+                  color: isCyber ? 'var(--accent-primary)' : '#FAF8F4',
+                  backdropFilter: 'blur(10px)',
+                  boxShadow: isCyber ? '0 0 20px rgba(0, 229, 255, 0.15)' : 'none',
+                }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLElement).style.background = isCyber ? 'var(--accent-primary)' : '#FAF8F4';
+                  (e.currentTarget as HTMLElement).style.color = isCyber ? '#080B14' : '#111111';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLElement).style.background = isCyber ? 'rgba(0, 229, 255, 0.08)' : 'rgba(255, 255, 255, 0.06)';
+                  (e.currentTarget as HTMLElement).style.color = isCyber ? 'var(--accent-primary)' : '#FAF8F4';
+                }}
+              >
+                <FileDown size={16} />
+                <span>DOWNLOAD CV (PDF)</span>
+                <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
               <span className="font-helix text-[11px] font-semibold uppercase tracking-wider" style={{ color: isCyber ? '#4A6080' : '#706D66' }}>
                 RESPONSE TIME: WITHIN 24 HOURS
               </span>
+            </div>
+          </div>
+
+          {/* CV & RESUME ARCHIVE VAULT BANNER */}
+          <div
+            className="mt-16 p-6 sm:p-8 rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden"
+            style={{
+              background: isCyber ? 'rgba(0, 229, 255, 0.03)' : 'rgba(255, 255, 255, 0.03)',
+              border: `1px solid ${isCyber ? 'rgba(0, 229, 255, 0.15)' : '#262626'}`,
+              backdropFilter: 'blur(16px)',
+            }}
+          >
+            {isCyber && (
+              <div
+                className="absolute top-0 right-0 w-48 h-48 pointer-events-none opacity-20"
+                style={{ background: 'radial-gradient(circle, var(--accent-primary), transparent 70%)' }}
+              />
+            )}
+
+            <div className="space-y-2 max-w-2xl relative z-10">
+              <div className="flex items-center gap-2">
+                <FileText size={15} style={{ color: 'var(--accent-primary)' }} />
+                <span className="font-mono text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--accent-primary)' }}>
+                  CURRICULUM VITAE // 2026 EDITION
+                </span>
+                <span className="text-[10px] font-mono uppercase px-2 py-0.5 rounded-sm bg-white/5 text-gray-400">
+                  OFFICIAL PDF
+                </span>
+              </div>
+              <h3 className="font-display text-xl sm:text-2xl font-bold uppercase tracking-tight text-white">
+                VIVEK SHARMA — ENGINEERING RESUME
+              </h3>
+              <p className="text-xs sm:text-sm leading-relaxed text-gray-400">
+                Full Stack Development Intern @ Flyrank AI · Computer Science & Engineering (B.Tech) · AI/ML, Python & React Specialization.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-3 relative z-10 w-full sm:w-auto">
+              <a
+                href="/Vivek_Sharma_CV.pdf"
+                download="Vivek_Sharma_CV.pdf"
+                className="flex-1 sm:flex-initial px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold rounded-sm flex items-center justify-center gap-2 shadow-sm transition-all"
+                style={{
+                  background: 'var(--accent-primary)',
+                  color: isCyber ? '#080B14' : '#111111',
+                }}
+              >
+                <FileDown size={15} />
+                <span>DOWNLOAD PDF</span>
+              </a>
+
+              <a
+                href="/Vivek_Sharma_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 sm:flex-initial px-5 py-3.5 font-mono text-xs uppercase tracking-widest font-semibold rounded-sm flex items-center justify-center gap-2 border transition-all"
+                style={{
+                  borderColor: isCyber ? 'rgba(0, 229, 255, 0.3)' : '#3A3A3A',
+                  color: isCyber ? '#E8F4FF' : '#F3F0E8',
+                  background: 'transparent',
+                }}
+              >
+                <ExternalLink size={14} />
+                <span>PREVIEW ONLINE</span>
+              </a>
             </div>
           </div>
 

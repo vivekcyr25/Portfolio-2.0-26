@@ -7,6 +7,7 @@ import { Experience } from '../components/Portfolio/Experience';
 import { Toolkit } from '../components/Portfolio/Toolkit';
 import { BuildProcess } from '../components/Portfolio/BuildProcess';
 import { About } from '../components/Portfolio/About';
+import { Certificates } from '../components/Portfolio/Certificates';
 import { Contact } from '../components/Portfolio/Contact';
 import { CyberTransition } from '../components/Portfolio/CyberTransition';
 import { DocumentHead } from '../components/Portfolio/DocumentHead';
@@ -42,11 +43,12 @@ const HomeContent: React.FC = () => {
       <main id="main-content">
         <Hero />
         <Stats />
+        <About />
         <ProjectShowcase />
+        <Certificates />
         <Experience />
         <Toolkit />
         <BuildProcess />
-        <About />
       </main>
 
       {/* Contact & Footer */}

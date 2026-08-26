@@ -1,12 +1,11 @@
 import { useEffect } from 'react';
 
 /**
- * Hook to apply dynamic pop & stretch-up animation to text strings
- * when scrolling down into the viewport.
+ * Hook to apply visible blur-in and kinetic stretch-pop animation to text & headings
+ * across the site, with a snappy 0.5s unblur duration on scroll.
  */
 export const useScrollTextStretch = () => {
   useEffect(() => {
-    // Target text elements across the page
     const textSelectors = [
       'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
       'p',
@@ -23,28 +22,47 @@ export const useScrollTextStretch = () => {
       '.editorial-section h3',
     ];
 
-    const elements = document.querySelectorAll(textSelectors.join(', '));
+    const elements = document.querySelectorAll<HTMLElement>(textSelectors.join(', '));
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
+          const target = entry.target as HTMLElement;
           if (entry.isIntersecting) {
-            entry.target.classList.add('scroll-pop-in');
-            entry.target.classList.remove('scroll-pop-ready');
+            target.classList.add('kinetic-text-in');
+            target.classList.remove('kinetic-text-ready');
+          } else {
+            // Re-arm when scrolled well out of view so re-scrolling triggers the 0.5s blur-pop
+            const rect = entry.boundingClientRect;
+            if (rect.top > window.innerHeight + 80 || rect.bottom < -80) {
+              target.classList.remove('kinetic-text-in');
+              target.classList.add('kinetic-text-ready');
+            }
           }
         });
       },
       {
         root: null,
-        rootMargin: '0px 0px -40px 0px',
-        threshold: 0.1,
+        rootMargin: '0px 0px -30px 0px',
+        threshold: 0.08,
       }
     );
 
     elements.forEach((el) => {
-      // Avoid breaking layout for flex inline or buttons/icons
-      if (!el.classList.contains('scroll-pop-in') && !el.closest('button') && !el.closest('svg')) {
-        el.classList.add('scroll-pop-ready');
+      if (
+        !el.closest('button') &&
+        !el.closest('svg') &&
+        !el.closest('input') &&
+        !el.closest('textarea') &&
+        !el.closest('nav')
+      ) {
+        const rect = el.getBoundingClientRect();
+        // Immediately reveal elements already visible at top on initial mount
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('kinetic-text-in');
+        } else {
+          el.classList.add('kinetic-text-ready');
+        }
         observer.observe(el);
       }
     });
