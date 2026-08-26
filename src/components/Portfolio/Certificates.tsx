@@ -14,12 +14,14 @@ export interface CertificateItem {
   credentialUrl?: string;
 }
 
+const BASE = import.meta.env.BASE_URL;
+
 const certificatesData: CertificateItem[] = [
   {
     id: 'walmart',
     title: 'Walmart Global Tech',
     provider: 'Advanced Software Engineering Job Simulation',
-    image: '/certificates/cert-walmart-forage.jpg',
+    image: `${BASE}certificates/cert-walmart-forage.jpg`,
     focus: 'Data structures, backend processing & architecture systems',
     badge: 'Architect',
     issueDate: 'April 2026',
@@ -28,7 +30,7 @@ const certificatesData: CertificateItem[] = [
     id: 'tata',
     title: 'TATA Forage',
     provider: 'Data Visualisation: Empowering Business Insights',
-    image: '/certificates/cert-tata-forage.jpg',
+    image: `${BASE}certificates/cert-tata-forage.jpg`,
     focus: 'Executive analytics, dashboard design & business intelligence',
     badge: 'Data Intelligence',
     issueDate: 'April 2026',
@@ -37,7 +39,7 @@ const certificatesData: CertificateItem[] = [
     id: 'infosys-react',
     title: 'Infosys Springboard',
     provider: 'Learning Full Stack React Development',
-    image: '/certificates/cert-infosys-react.jpg',
+    image: `${BASE}certificates/cert-infosys-react.jpg`,
     focus: 'Component architecture, state management & performance',
     badge: 'Frontend Systems',
     issueDate: 'April 2026',
@@ -46,7 +48,7 @@ const certificatesData: CertificateItem[] = [
     id: 'infosys-devops',
     title: 'Infosys Springboard',
     provider: 'Mastering DevOps & Modern CI/CD',
-    image: '/certificates/cert-infosys-devops.jpg',
+    image: `${BASE}certificates/cert-infosys-devops.jpg`,
     focus: 'Deployment pipelines, containerization & infrastructure ops',
     badge: 'Infrastructure Ops',
     issueDate: 'April 2026',
@@ -55,7 +57,7 @@ const certificatesData: CertificateItem[] = [
     id: 'india-ai',
     title: 'India AI Mission',
     provider: 'India-AI Impact Summit Explorer & Neural Innovation',
-    image: '/certificates/cert-india-ai.jpg',
+    image: `${BASE}certificates/cert-india-ai.jpg`,
     focus: 'National AI ecosystem, responsible compute & ML frameworks',
     badge: 'AI Explorer',
     issueDate: 'April 2026',
@@ -64,7 +66,7 @@ const certificatesData: CertificateItem[] = [
     id: 'hp-life',
     title: 'HP LIFE Foundation',
     provider: 'Strategic Professional Communications & Collaboration',
-    image: '/certificates/cert-hp-life.jpg',
+    image: `${BASE}certificates/cert-hp-life.jpg`,
     focus: 'Engineering leadership, cross-functional sync & networking',
     badge: 'Leadership Systems',
     issueDate: 'April 2026',
