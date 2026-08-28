@@ -18,6 +18,8 @@ export interface ProjectItem {
   featured?: boolean;
 }
 
+const BASE = import.meta.env.BASE_URL;
+
 const projects: ProjectItem[] = [
   {
     number: '01',
@@ -28,7 +30,7 @@ const projects: ProjectItem[] = [
     tech: ['Python', 'PyTorch', 'Real-ESRGAN', 'OpenCV', 'FFmpeg', 'CUDA'],
     problem: 'Standard upscaling algorithms introduce severe blur and artifacts when processing low-resolution, noisy archival media.',
     impact: 'Achieves high perceptual PSNR/SSIM scores and restores facial micro-details while maintaining temporal consistency across frames.',
-    image: '/projects/ai-video-restoration.jpg',
+    image: `${BASE}projects/ai-video-restoration.jpg`,
     github: 'https://github.com/vivekcyr25/AI-Video-Restoration-Pipeline',
     featured: true,
   },
@@ -41,7 +43,7 @@ const projects: ProjectItem[] = [
     tech: ['React 19', 'TypeScript', 'Tailwind CSS', 'Firebase Auth', 'Firestore', 'Gemini API'],
     problem: 'Developers spend dozens of hours wrestling with boilerplate setups instead of showcasing their actual achievements.',
     impact: 'Reduces portfolio creation time to under 5 minutes with modular section wizards and live editable previews.',
-    image: '/projects/project-high-tech.png',
+    image: `${BASE}projects/project-high-tech.png`,
     github: 'https://github.com/vivekcyr25/Personal-website',
     live: 'https://vivekcyr25.github.io/Personal-website/',
     featured: true,
@@ -55,7 +57,7 @@ const projects: ProjectItem[] = [
     tech: ['React', 'TypeScript', 'Node.js', 'Chart.js', 'Tailwind CSS', 'REST APIs'],
     problem: 'Fragmented university portals fail to provide actionable performance trajectory insights to students.',
     impact: 'Provides unified visual analytics, attendance contingency alerts, and automated grade milestone calculators.',
-    image: '/projects/student-portal.png',
+    image: `${BASE}projects/student-portal.png`,
     github: 'https://github.com/vivekcyr25/APIS-Academic-Intelligence-System',
     live: 'https://vivekcyr25.github.io/APIS-Academic-Intelligence-System/',
     featured: true,
@@ -69,7 +71,7 @@ const projects: ProjectItem[] = [
     tech: ['React', 'Three.js / WebGL', 'Framer Motion', 'Web Audio API', 'CSS Grid'],
     problem: 'Standard static portfolios lack tactile interactivity and memorable creative direction.',
     impact: 'Showcases advanced client-side render optimizations, 60fps canvas performance, and high-engagement user interactions.',
-    image: '/projects/project-3.png',
+    image: `${BASE}projects/project-3.png`,
     github: 'https://github.com/vivekcyr25/First-Portfolio',
     live: 'https://vivekcyr25.github.io/First-Portfolio/',
     featured: false,
@@ -83,7 +85,7 @@ const projects: ProjectItem[] = [
     tech: ['Python', 'Tkinter', 'SQLite3', 'OOP Architecture', 'Data Structures'],
     problem: 'Manual book and inventory logging leads to bookkeeping discrepancies and slow record lookups.',
     impact: 'Automates issuance workflows, tracks transaction histories, and eliminates physical log overhead.',
-    image: '/projects/library-management.svg',
+    image: `${BASE}projects/library-management.svg`,
     github: 'https://github.com/vivekcyr25/Python-small-project-LMS-',
     featured: false,
   },

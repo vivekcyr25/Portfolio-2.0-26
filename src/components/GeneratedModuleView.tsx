@@ -94,9 +94,13 @@ export const GeneratedModuleView: React.FC<GeneratedModuleViewProps> = ({ module
               </div>
               <div className="pt-4 border-t border-white/5 flex justify-between items-center">
                 <span className="font-space-mono text-xs text-white/50">Resume Access</span>
-                <button className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg font-space-mono text-[10px] text-white hover:bg-white/10 transition-all flex items-center gap-2">
+                <a
+                  href={`${import.meta.env.BASE_URL}Vivek_Sharma_CV.pdf`}
+                  download="Vivek_Sharma_CV.pdf"
+                  className="bg-white/5 border border-white/10 px-3 py-1.5 rounded-lg font-space-mono text-[10px] text-white hover:bg-white/10 transition-all flex items-center gap-2"
+                >
                   <ExternalLink size={10} /> Download PDF
-                </button>
+                </a>
               </div>
             </div>
           </div>

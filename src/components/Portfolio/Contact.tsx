@@ -4,6 +4,8 @@ import { ArrowUpRight, Mail, Globe, ArrowUp, FileDown, FileText, ExternalLink } 
 import { Link } from 'react-router-dom';
 import { usePortfolioMode } from '../../context/PortfolioModeContext';
 
+const BASE = import.meta.env.BASE_URL;
+
 export const Contact: React.FC = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -100,7 +102,7 @@ export const Contact: React.FC = () => {
 
               {/* DOWNLOAD CV PRIMARY BUTTON */}
               <a
-                href="/Vivek_Sharma_CV.pdf"
+                href={`${BASE}Vivek_Sharma_CV.pdf`}
                 download="Vivek_Sharma_CV.pdf"
                 className="w-full sm:w-auto px-8 py-4 font-mono text-xs uppercase tracking-widest font-bold rounded-sm flex items-center justify-center gap-3 group transition-all"
                 style={{
@@ -166,7 +168,7 @@ export const Contact: React.FC = () => {
 
             <div className="flex flex-wrap items-center gap-3 relative z-10 w-full sm:w-auto">
               <a
-                href="/Vivek_Sharma_CV.pdf"
+                href={`${BASE}Vivek_Sharma_CV.pdf`}
                 download="Vivek_Sharma_CV.pdf"
                 className="flex-1 sm:flex-initial px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-bold rounded-sm flex items-center justify-center gap-2 shadow-sm transition-all"
                 style={{
@@ -179,7 +181,7 @@ export const Contact: React.FC = () => {
               </a>
 
               <a
-                href="/Vivek_Sharma_CV.pdf"
+                href={`${BASE}Vivek_Sharma_CV.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 sm:flex-initial px-5 py-3.5 font-mono text-xs uppercase tracking-widest font-semibold rounded-sm flex items-center justify-center gap-2 border transition-all"

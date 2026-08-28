@@ -103,7 +103,7 @@ const TelemetryGraph: React.FC = () => {
       try {
         const start = performance.now();
         // Fetch tiny favicon or self ping with cache-buster
-        const res = await fetch(`/favicon.ico?_t=${Date.now()}`, { method: 'HEAD', cache: 'no-store' });
+        const res = await fetch(`${import.meta.env.BASE_URL}?_t=${Date.now()}`, { method: 'HEAD', cache: 'no-store' });
         const duration = performance.now() - start;
         if (duration > 0) {
           measuredPing = Math.round(duration);

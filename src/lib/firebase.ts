@@ -4,17 +4,17 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "AIzaSyDummyKeyForLocalTestingDevelopmentOnly000",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "neural-os-demo.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "neural-os-demo",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "neural-os-demo.appspot.com",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789000",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:123456789000:web:abcdef1234567890",
+  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || "G-NEURALDEMO"
 };
 
-if (!firebaseConfig.apiKey) {
-  console.error("CRITICAL_SYSTEM_ERROR: Neural credentials missing. Please populate .env with Firebase keys.");
+if (!import.meta.env.VITE_FIREBASE_API_KEY) {
+  console.warn("SYSTEM_NOTICE: Running in local offline/guest mode. To enable live cloud sync, populate .env with your Firebase keys.");
 }
 
 const app = initializeApp(firebaseConfig);
